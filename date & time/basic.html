@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <div ng-app="myApp" ng-controller="myCtr">
+        <p>Date = {{today | date: "dd.MM.y"}}</p>
+        <p>Date = {{today | date: "mediumTime"}}</p>
+        <p>Date = {{today | date: "medium"}}</p>
+        <p>Date = {{today | date: "short"}}</p>
+        <p>Date = {{today | date: "shortDate"}}</p>
+        <p>Date = {{today | date: "longDate"}}</p>
+        <p>Date = {{today | date: "fullDate"}}</p>
+    </div>
+
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myCtr", function($scope){
+            $scope.today = new Date();
+        });
+    </script>
+    
+</body>
+</html>

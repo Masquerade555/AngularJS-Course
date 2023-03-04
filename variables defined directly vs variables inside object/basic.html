@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Document</title>
+    <script src="js.js"></script>
+</head>
+
+<body ng-app="myApp">
+
+    <div>
+        <h1>Nested variables defined directly with controllers</h1>
+    </div>
+
+    <div ng-controller="firstC">
+        <h2>1st Controller</h2>
+        <strong>First Name: </strong>
+        {{firstName}}
+        <br>
+
+        <label>Set the first name: <input type="text" ng-model="firstName">
+        </label>
+        <br>
+
+        <div ng-controller="secondC">
+            <h2>2nd Controller inside 1st</h2>
+            <strong>First Name form inside 1st controller: </strong>
+            {{firstName}}
+            <br>
+            <strong>last name: (new) </strong>
+            {{lastName}}
+            <br>
+
+            <strong>Full Name: </strong>
+            {{getFullName}}
+            <label>Set the first name: <input type="text" ng-model="firstName">
+            </label>
+            <br>
+            <label>Set the last name: <input type="text" ng-model="lastName">
+            </label>
+            <br>
+
+            <div ng-controller="thirdC">
+                <h2>3rd Controller inside 2nd and 1st</h2>
+                <strong>First Name form inside 1st controller: </strong>
+                {{firstName}}
+                <br>
+
+                <strong>middle name: (new) </strong>
+                {{middleName}}
+                <br>
+                <strong>last name: (from 2nd controller) </strong>
+                {{$parent.lastName}}
+                <br>
+                <strong>last name: (redefined) </strong>
+                {{lastName}}
+                <br>
+    
+                <strong>Full Name: (redefined) </strong>
+                {{getFullName()}}
+                <label>Set the first name: <input type="text" ng-model="firstName">
+                </label>
+                <br>
+                <label>Set the middle name: <input type="text" ng-model="middleName">
+                </label>
+                <br>
+                <label>Set the last name: <input type="text" ng-model="lastName">
+                </label>
+                <br>
+    
+                
+    
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div>
+        <h1>Nested variables defined inside object with controllers</h1>
+    </div>
+
+    <div ng-controller="firstobj">
+        <h2>1st Controller</h2>
+        <strong>First Name: </strong>
+        {{firstModelObj.firstName}}
+        <br>
+
+        <label>Set the first name: <input type="text" ng-model="firstModelObj.firstName">
+        </label>
+        <br>
+
+        <div ng-controller="secondobj">
+            <h2>2nd Controller inside 1st</h2>
+            <strong>First Name form inside 1st controller: </strong>
+            {{firstModelObj.firstName}}
+            <br>
+            <strong>last name: (new) </strong>
+            {{secondModelObj.lastName}}
+            <br>
+
+            <strong>Full Name: </strong>
+            {{getFullName}}
+            <label>Set the first name: <input type="text" ng-model="firstModelObj.firstName">
+            </label>
+            <br>
+            <label>Set the last name: <input type="text" ng-model="secondModelObj.lastName">
+            </label>
+            <br>
+
+            <div ng-controller="thirdobj">
+                <h2>3rd Controller inside 2nd and 1st</h2>
+                <strong>First Name form inside 1st controller: </strong>
+                {{firstModelObj.firstName}}
+                <br>
+
+                <strong>middle name: (new) </strong>
+                {{thirdModelObj.middleName}}
+                <br>
+                <strong>last name: (from 2nd controller) </strong>
+                {{secondModelObj.lastName}}
+                <br>
+                <strong>last name: (redefined) </strong>
+                {{thirdModelObj.lastName}}
+                <br>
+    
+                <strong>Full Name: (redefined) </strong>
+                {{getFullName()}}
+                <label>Set the first name: <input type="text" ng-model="firstModelObj.firstName">
+                </label>
+                <br>
+                <label>Set the middle name: <input type="text" ng-model="thirdModelObj.middleName">
+                </label>
+                <br>
+                <label>Set the last name: <input type="text" ng-model="thirdModelObj.lastName">
+                </label>
+                <br>
+    
+                
+    
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

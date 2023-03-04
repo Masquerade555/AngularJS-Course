@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Document</title>
+</head>
+<body ng-app="myApp">
+    
+    <p>Root scope</p>
+    <h1>{{color}}</h1>
+    <div ng-contoller="myCtr">
+        <p>controller scope</p>
+        <h1>{{color}}</h1>
+    </div>
+
+    <p>root scope is still</p>
+    <h1>{{color}}</h1>
+
+    <script>
+        var applicatio = angular.module("myApp",[]);
+        applicatio.run(function($rootScope){
+            $rootScope.color = "red";
+        });
+        applicatio.controller("myCtr", function($scope){
+            $scope.color = "blue";
+        });
+    </script>
+</body>
+</html>

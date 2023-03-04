@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Document</title>
+</head>
+<body ng-app="">
+
+    <form name="myForm">
+        <input type="text" name="myText" ng-model="myText" placeholder="Text">
+
+    </form>
+    <h3>The form valid state is: </h3>
+    <h1>{{myForm.myText.$valid}}</h1>
+
+    <form name="myForm1">
+        <input type="email" name="myEmail" ng-model="myEmail" placeholder="email">
+
+    </form>
+    <h3>The form valid state is: </h3>
+    <h1>{{myForm1.myEmail.$valid}}</h1>
+
+    <form name="myForm2">
+        <label for="fName">First Name: </label>
+        <input type="text" name="fName" ng-model="fName" placeholder="F Name" ng-required="true">
+        <label for="lName">Last Name: </label>
+        <input type="text" name="lName" ng-model="lName" placeholder="L Name" ng-required="true">
+        <label for="email">Email: </label>
+        <input type="email" name="email" ng-model="email" placeholder="Email" ng-required="true">
+
+        <input type="submit" value="Submit">
+
+    </form>
+    
+    
+</body>
+</html>
