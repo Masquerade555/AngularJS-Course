@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+    <title>Document</title>
+</head>
+<body ng-controller="ctr">
+
+    <button ng-click="UsingProvider()">Using Service</button>
+    <div ng-bind="ProviderResult"></div>
+    
+    <script>
+        var app = angular.module("myapp",[]);
+        app.provider("myProvider", function(){
+            this.$get = function(){
+                return{
+                    myF: function(){
+                        var a = "Hi There.";
+                        var b = "How Are You Today?";
+                        return a + " " + b;
+                    },
+                };
+            };
+        });
+        app.controller("ctr", function($scope, myProvider){
+            $scope.ProviderResult = "Provider Result";
+            $scope.UsingProvider = function(){
+                $scope.ProviderResult = myProvider.myF();
+            };
+        });
+    </script>
+</body>
+</html>

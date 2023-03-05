@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+    <title>Document</title>
+</head>
+<body ng-controller="ctr">
+
+    <input type="number" ng-model="n1">
+    <input type="number" ng-model="n2">
+    <input type="number" ng-model="n3">
+    <button ng-click="Multiply()">Multiply</button>
+    <button ng-click="Addition()">Addition</button>
+    <button ng-click="Substraction()">Substraction</button>
+
+    <h1>{{answer}}</h1>
+
+    <script>
+        var app = angular.module("myapp",[]);
+        app.factory("Math", function(){
+            var factory = {};
+            factory.Multiply = function(a,b,c)
+            {
+                return a*b*c;
+            }
+            factory.Addition = function(a,b,c)
+            {
+                return a+b+c;
+            }
+            factory.Substraction = function(a,b,c)
+            {
+                return a-b-c;
+            }
+            
+            return factory;
+        })
+        app.controller("ctr", function($scope,Math){
+            $scope.Multiply = function(){
+                $scope.number = $scope.n1;
+                $scope.answer = Math.Multiply($scope.n1,$scope.n2,$scope.n3);
+            }
+            $scope.Addition = function(){
+                $scope.number = $scope.n1;
+                $scope.answer = Math.Addition($scope.n1,$scope.n2,$scope.n3);
+            }
+            $scope.Substraction = function(){
+                $scope.number = $scope.n1;
+                $scope.answer = Math.Substraction($scope.n1,$scope.n2,$scope.n3);
+            }
+        });
+    </script>
+    
+</body>
+</html>

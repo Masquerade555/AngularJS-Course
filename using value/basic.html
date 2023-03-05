@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+    <title>Document</title>
+</head>
+
+<body ng-controller="myctr">
+
+    <h3>User Name is:
+        <strong>{{name}}
+        </strong> Welcome
+    </h3>
+
+    <script>
+        var app = angular.module("myapp",[]);
+        app.value("name", "Jackie");
+        app.controller("myctr", ["$scope", "name", function($scope,name){
+            $scope.name = name;
+        }])
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!--Now to make exception of the old file-->
+
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body ng-controller="myC">
+
+    <div>
+        <h1>Status: {{status}}</h1>
+        <h1>Data: {{data}}</h1>
+
+        <input type="button" value="Get Data" ng-click="getData()">
+    </div>
+
+    <script>
+        var app = angular.module("myApp", []);
+
+        app.config(function ($provide) {
+            $provide.decorator("$exceptionHandler", function ($delegate) {
+                return function (exception, cause) {
+                    $delegate(exception, cause);
+                    alert("Unknown Error Occured");
+                };
+            });
+        });
+
+
+        app.controller("myC", function ($scope) {
+            var onSuccess = function (response) {
+                $scope.status = response.status;
+                $scope.data = response.data;
+            };
+            var onError = function (response) {
+                $scope.status = response.status;
+                $scope.data = response.data;
+            };
+            $scope.getData = function () {
+                $http.get("data.html").then(onSuccess, onError);
+            };
+        });
+
+    </script>
+
+</body>
+
+</html>
