@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+    <title>Document</title>
+</head>
+
+<body ng-controller="ctr">
+
+    <h1>Fastfood App</h1>
+
+    <h4>Zinger or Roll</h4>
+    <input type="text" ng-model="v1">
+
+    <h4>Cold Drink? Yes or No</h4>
+    <input type="text" ng-model="v2">
+
+    <h4>Credit card or Cash?</h4>
+    <input type="text" ng-model="v3">
+
+    <button ng-click="submit()">Submit</button>
+
+    <h1>{{result}}</h1>
+
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("ctr", function ($scope) {
+
+            $scope.submit = function(){
+            if ($scope.v1 == "zinger" || $scope.v1 == "roll") {
+                if ($scope.v2 == "yes" || $scope.v2 == "no") {
+                    if ($scope.v3 == "card" || $scope.v3 == "cash") {
+                        $scope.result = "Your Order is " + $scope.v1 + ", cold drink " + $scope.v2 +
+                            " and payment with " + $scope.v3;
+                    }
+
+                    else {
+                        $scope.result = "Wrong Choice for payment";
+                    }
+
+                }
+                else{
+                    $scope.result = "Wrong Choice for cold drink";
+                }
+            }
+
+            else {
+                $scope.result = "Wrong Choice for zinger or roll";
+            }
+        }
+        })
+        
+    </script>
+</body>
+
+</html>

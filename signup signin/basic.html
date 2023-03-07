@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+    <title>Document</title>
+</head>
+<body ng-controller="ctr">
+
+    <h1>Sign Up</h1>
+
+    <h3>Username</h3>
+    <input type="text" ng-model="r1">
+    <h3>Password</h3>
+    <input type="password" ng-model="r2">
+    <button ng-click="signup()">Sign Up</button>
+
+    <h1>Sign In</h1>
+
+    <h3>Username</h3>
+    <input type="text" ng-model="s1">
+    <h3>Password</h3>
+    <input type="password" ng-model="s2">
+    <button ng-click="signin()">Sign In</button>
+
+    <h1>{{result}}</h1>
+
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("ctr", function($scope){
+            var username , password;
+            $scope.result = "Sign Up Please";
+            $scope.signup = function(){
+                username = $scope.r1;
+                password = $scope.r2;
+                $scope.result = "Now Sign In Please";
+            }
+            $scope.signin = function(){
+                if ($scope.s1 == username && $scope.s2 == password) {
+                    $scope.result = "Logged In";
+                } else {
+                    $scope.result = "Wrong Username or Password";
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>

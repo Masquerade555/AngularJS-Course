@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+    <title>Document</title>
+</head>
+
+<body ng-controller="ctr">
+
+    <h1>Salary Calculator</h1>
+
+    <h3>Basic Salary </h3>
+    <input type="number" ng-model="n1">
+
+    <h3>Medical is 10% of your salary</h3>
+    <h3>Medical {{med}}</h3>
+
+    <h3>Tax is 0.01% of your salary</h3>
+    <h3>TAX {{tax}}</h3>
+
+    <button ng-click="submit()">Submit</button>
+
+    <h1>Your Gross Salary is {{salary}}</h1>
+
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("ctr", function ($scope) {
+            $scope.n1 = 0;
+            $scope.med = $scope.n1 * 10;
+            $scope.tax = $scope.n1 * 0.01;
+            $scope.submit = function () {
+                $scope.med = $scope.n1 * 0.10;
+                $scope.tax = $scope.n1 * 0.01;
+                this.salary = this.med + this.n1 - this.tax;
+            }
+        })
+    </script>
+
+</body>
+
+</html>

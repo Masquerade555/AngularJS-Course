@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+    <title>Document</title>
+</head>
+<body ng-controller="ctr">
+
+    <h1>Positive or negative number</h1>
+    <input type="number" ng-model="n1">
+    <button ng-click="submit()">Submit</button>
+    <h1>{{result}}</h1>
+    <h1>{{result2}}</h1>
+
+    <script>
+        var app = angular.module("myapp",[]);
+        app.controller("ctr", function($scope){
+
+            $scope.submit = function(){
+            if ($scope.n1 > 0) {
+                $scope.result = $scope.n1 +" is a positive number";
+            } else if ($scope.n1 < 0) {
+                $scope.result = $scope.n1 +" is a negative number";
+            } 
+            else{
+                $scope.result = $scope.n1 +" is a zero";
+            }
+
+            if ($scope.n1%2 == 0) {
+                $scope.result2 = $scope.n1 +" is an even number";
+            } else {
+                $scope.result2 = $scope.n1 +" is a odd number";
+            }
+        }
+        })
+    </script>
+    
+</body>
+</html>

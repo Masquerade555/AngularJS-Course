@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-animate.min.js">
+    </script>
+    <title>Document</title>
+</head>
+<body ng-controller="ctr">
+
+    <h1>ATM MAchine</h1>
+    <h4>Enter your username</h4>
+    <input type="text" ng-model="username">
+    <h4>Enter your password</h4>
+    <input type="text" ng-model="password">
+    <h4>Enter your amount</h4>
+    <input type="number" ng-model="amount">
+    <h4>Do you want a slip?</h4>
+    <input type="text" ng-model="slip">
+    
+    <button ng-click="submit()" ng-model="myp">Submit</button>
+    <br><br>
+    <h1 ng-hide="myp">Welcome {{username}}. Your Amount {{amount}} is getting ready. {{slipresult}} Thank You for using our ATM.</h1>
+
+    <style>
+        ng-hide{
+            height: 0;
+            width: 0;
+        }
+    </style>
+    <script>
+        var user,pass;
+        user = "admin";
+        pass = "admin";
+        var app = angular.module("myapp",[]);
+        app.controller("ctr", function($scope){
+            $scope.amount = 0;
+            $scope.slip = "Yes";
+            $scope.submit = function(){
+                if (user == this.username && pass == this.password) {
+                    if (this.amount <= 50000) {
+                        app = angular.module("myapp",["ngAnimate"]);
+                        if (this.slip == "yes" || this.slip == "Yes") {
+                            this.slipresult = "Here is your slip.";
+                        }
+                        else
+                        {
+                            this.slipresult = "";
+                        }
+                    }
+                    else
+                    {
+                        alert("Please Choose an amount less then 50000");
+                    }
+
+                }
+                else{
+                    alert("wrong username or password");
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>

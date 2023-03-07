@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+    <title>Document</title>
+</head>
+<body ng-controller="ctr">
+
+    <h1>Weather App</h1>
+
+    <h4>Enter the temperature in Centigrade</h4>
+    <input type="number" min="0" ng-model="n1">
+
+    <button ng-click="submit()">Submit</button>
+
+    <h1>{{result}}</h1>
+    
+    <script>
+        var app = angular.module("myapp", []);
+        app.controller("ctr", function($scope){
+
+            $scope.submit = function(){
+
+                if ($scope.n1 <= 0) {
+                 $scope.result = "Its extremely cold outside be careful when you go out";
+                   
+                }
+                else if ($scope.n1 <= 15) {
+                    $scope.result = "Its very cold make sure to wear something";
+                } 
+                else if ($scope.n1 <= 30) {
+                    $scope.result = "The temperature is perfect to go out";
+                }
+                else if ($scope.n1 <= 45) {
+                    $scope.result = "Its hot outside make sure to drink something";
+                }
+                else if ($scope.n1 <= 60) {
+                    $scope.result = "Its extremely hot outside don`t go out without any reason";
+                }
+                 else {
+                    $scope.result = "Wrong Temperature";
+                }
+            }
+        })
+    </script>
+</body>
+</html>

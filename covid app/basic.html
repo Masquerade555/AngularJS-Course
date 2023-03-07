@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+    <title>Document</title>
+</head>
+<body ng-controller="ctr">
+
+    <h1>Covid App</h1>
+
+    <h4>Enter Your Age</h4>
+    <input type="number" ng-model="n1">
+
+    <h4>Enter Your 1st Symptom (fever or tiredness)</h4>
+    <input type="text" ng-model="v1">
+
+    <h4>Enter Your 2nd Symptom (vomitting or sore throat)</h4>
+    <input type="text" ng-model="v2">
+
+    <button ng-click="submit()">Submit</button>
+
+    <h1>{{result}}</h1>
+    
+    <script>
+        var app = angular.module("myapp",[]);
+        app.controller("ctr", function($scope){
+
+            $scope.submit = function(){
+
+                if ($scope.n1 >= 12) {
+                    if ($scope.v1 == "fever") {
+                        if ($scope.v2 == "sore throat") {
+                            $scope.result = "You have covid";
+                        }
+                        else if($scope.v2 == "vomitting")
+                        {
+                            $scope.result = "You have Dengue";
+                        }
+                         else {
+                            $scope.result = "Wrong Choice";
+                        }
+                        
+                    }
+                    else if ($scope.v1 == "tiredness") {
+                        if ($scope.v2 == "sore throat") {
+                            $scope.result = "You have Typhoid";
+                        }
+                        else if($scope.v2 == "vomitting")
+                        {
+                            $scope.result = "You have Dengue";
+                        }
+                         else {
+                            $scope.result = "Wrong Choice";
+                        }
+                        
+                    }
+                    else
+                    {
+                        $scope.result = "Wrong Choice";
+                    }
+                }
+                 else {
+                    $scope.result = "Age 12 or under doen`t get covid";
+                }
+            }
+        })
+    </script>
+</body>
+</html>
